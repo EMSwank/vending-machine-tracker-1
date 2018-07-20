@@ -14,6 +14,18 @@ describe "A User" do
       expect(page).to have_content(snack.name)
       expect(page).to have_content(snack.price)
     end
+    it 'sees a list of locations with vending machines that carry that snack' do
+      user = User.create(name: 'bob')
+      owner = Owner.create(name: "jim")
+      snack = Snack.create(name: 'kit-kat', price: 100)
+      machine1 = snack.machines.create(location: 'here')
+      machine2 = snack.machines.create(location: 'there')
+
+      visit snack_path(snack)
+
+      expect(page).to have_content(machine1.location)
+      expect(page).to have_content(machine2.location)
+    end
   end
 end
 
@@ -22,7 +34,6 @@ end
 
 As a user
 When I visit a specific snack page
-I see the price for that snack
 I see a list of locations with vending machines that carry that snack
 I see the average price for snacks in those vending machines
 And I see a count of the different kinds of items in that vending machine.
