@@ -8,7 +8,7 @@ describe "A Visitor" do
       snack1 = machine.snacks.create(name: 'kit-kat')
       snack2 = machine.snacks.create(name: 'snickers')
 
-      visit machines_path
+      visit machine_path(machine)
 
       expect(page).to have_content(snack1) 
       expect(page).to have_content(snack2) 
