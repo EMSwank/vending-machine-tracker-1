@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe "A User" do
   context "visits a snack show page" do
-    it "sees the name of that snack" do
+    it "sees the name and price of that snack" do
       user = User.create(name: 'bob')
       owner = Owner.create(name: "jim")
       snack = Snack.create(name: 'kit-kat', price: 100)
@@ -12,6 +12,7 @@ describe "A User" do
       visit snack_path(snack)
 
       expect(page).to have_content(snack.name)
+      expect(page).to have_content(snack.price)
     end
   end
 end
@@ -21,7 +22,6 @@ end
 
 As a user
 When I visit a specific snack page
-I see the name of that snack
 I see the price for that snack
 I see a list of locations with vending machines that carry that snack
 I see the average price for snacks in those vending machines
