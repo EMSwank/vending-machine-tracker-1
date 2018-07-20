@@ -3,6 +3,7 @@ require 'rails_helper'
 describe "A User" do
   context "visits a machine show page" do
     it "sees the average price for all snacks in that machine" do
+      user = User.create(name: 'bob')
       owner = Owner.create(name: "jim")
       machine = owner.machines.create(location: 'here')
       snack1 = machine.snacks.create(name: 'kit-kat', price: 100)
