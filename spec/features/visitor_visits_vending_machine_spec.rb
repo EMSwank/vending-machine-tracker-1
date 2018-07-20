@@ -10,8 +10,9 @@ describe "A Visitor" do
 
       visit machine_path(machine)
 
-      expect(page).to have_content(snack1) 
-      expect(page).to have_content(snack2) 
+      expect(page).to have_content("All Snacks") 
+      expect(page).to have_content(snack1.name) 
+      expect(page).to have_content(snack2.name) 
     end
   end
 end
